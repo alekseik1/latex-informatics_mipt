@@ -1,11 +1,14 @@
 \input{../tech_stuff/preambula}
 \input{../tech_stuff/environments}
-
 %----------------------------------------------------------------------------------------
 \newcounter{lectureNo}
 \setcounter{lectureNo}{1}
+\newcommand{\allInOneFolder}{/home/aleksei/github_projects/latex_works/informatics/all_in_one}
+\newcommand{\mainFolder}{}
+\newcommand{\myFolder}{}
+\newcommand{\lectureSubject}{}
 
-\input{title_page}
+\input{\allInOneFolder/title_page}
 
 \begin{document}
 	\maketitle
@@ -14,5 +17,5 @@
 
 	\tableofcontents
 	\newpage
-	\input{lecture}
+	\input{\allInOneFolder/lecture}
 \end{document}

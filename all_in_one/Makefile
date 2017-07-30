@@ -1,16 +1,14 @@
-LECTURE_NUMBER=$(shell pwd | grep -oP "lecture_([0-9]*)" | grep -oP "_.*" | sed "s/_//")
-
 .PHONY: all clean twice
 MAIN_FILE=main.tex
 REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ./title_page.tex $(MAIN_FILE)
-OUT_FILE=lecture_$(LECTURE_NUMBER).pdf
+OUT_FILE=all_lectures.pdf
 DIR=$(shell pwd)
 all: main
 
 main:	$(REQ)
 	pdflatex $(MAIN_FILE) 2>&1 1>/dev/null && \
 	mv $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) && \
-	echo "-------------\nУСПЕШНО ДЛЯ $(OUT_FILE)!\n-------------\n"
+	echo "-------------\nУСПЕШНО СОБРАЛИ ВСЕ ЛЕКЦИИ!\n-------------\n"
 
 # ACHTUNG! Очень костыльная цель. Сделал её потому, что иногда pdflatex не с первого раза делает оглавление\нумерацию\т.п.
 twice:	$(REQ)
@@ -22,5 +20,5 @@ twice:	$(REQ)
 
 
 clean:
-	echo "Cleaning folder ../$(shell pwd | grep -oP "lecture_[0-9]*")..."
+	echo "Cleaning folder ../all_in_one..."
 	$(RM) -rf *.log *.aux *.gz *.toc && echo "Done!"

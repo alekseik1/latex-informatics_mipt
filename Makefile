@@ -1,7 +1,6 @@
 .PHONY: all clean
 
-DIR=$(shell pwd)
-together: DIR+=/all_in_one
+DIR=$(shell pwd)/all_in_one
 
 all: all
 
@@ -32,12 +31,15 @@ clean:
 # TODO: Сделать цель togther, собирающую все в один pdf файл
 together:
 	echo $(DIR)
-	for i in $(shell find . -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
+	for i in $(shell find $(pwd) -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
 		cd $$i; \
 		echo "Объединяю файлы из папки $$i..."; \
-		echo $$i/lecture.tex >> $(DIR)/lecture.tex && \
+		cat lecture.tex >> $(DIR)/lecture.tex && \
 		echo "\n" >> $(DIR)/lecture.tex && \
 		echo "Успех!"; \
 		cd ..; \
 	done
-
+	echo "ФАЙЛЫ ОБЪЕДИНЕНЫ, собираем в один pdf..."
+	cd $(DIR) && \
+	$(MAKE) && \
+	echo "Сборка успешно завершена!"
