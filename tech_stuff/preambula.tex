@@ -65,18 +65,22 @@
 	\secdef\@chapter\@schapter}
 \makeatother
 
-
 % Set up the header and footer
-\pagestyle{fancy}
-\lhead{\hmwkAuthorName} % Top left header
-\chead{Лекция\ №\,\arabic{lectureNo}\ : \lectureSubject} % Top center head
-\rhead{\firstxmark} % Top right header
-\lfoot{\lastxmark} % Bottom left footer
-\cfoot{} % Bottom center footer
-\rfoot{Страница\ \thepage\ из\ \protect\pageref{LastPage}} % Bottom right footer
-\renewcommand\headrulewidth{0.4pt} % Size of the header rule
-\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
-\setlength\parindent{0pt} % Removes all indentation from paragraphs
+\fancypagestyle{pl}{
+	\fancyhead{}
+	\renewcommand\headrulewidth{0.4pt} % Size of the header rule
+	\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+	\lhead{\leftmark} % Top left header
+	%\fancyhead[CO, CE]{\leftmark} % Top center head
+	\fancyhead[RO, RE]{\rightmark} % Top right header
+	\lfoot{\lastxmark} % Bottom left footer
+	\cfoot{} % Bottom center footer
+	\rfoot{\Author} % Bottom right footer
+	\setlength\parindent{0pt} % Removes all indentation from paragraphs
+}
+\pagestyle{pl}
+
+
 
 %----------------------------------------------------------------------------------------
 %	CODE INCLUSION CONFIGURATION

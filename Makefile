@@ -27,6 +27,8 @@ clean:
 		$(MAKE) clean; \
 		cd ..; \
 	done
+	cd $(DIR) && \
+	$(MAKE) clean
 
 # TODO: Сделать цель togther, собирающую все в один pdf файл
 together:
