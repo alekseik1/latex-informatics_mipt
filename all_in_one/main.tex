@@ -1,13 +1,11 @@
 \input{../tech_stuff/preambula}
 \input{../tech_stuff/environments}
-% TODO: ПОМЕНЯЙТЕ НА СВОЙ ПУТЬ ПРИ СБОРКЕ
-\newcommand{\mainFolder}{/home/aleksei/github_projects/latex_works/informatics}
-\newcommand{\myFolder}{\mainFolder/lecture_\arabic{lectureNo}/}
+
 %----------------------------------------------------------------------------------------
 \newcounter{lectureNo}
 \setcounter{lectureNo}{1}
 
-\input{\myFolder/title_page}
+\input{title_page}
 
 \begin{document}
 	\maketitle
@@ -16,5 +14,5 @@
 
 	\tableofcontents
 	\newpage
-	\input{\myFolder/lecture}
+	\input{lecture}
 \end{document}

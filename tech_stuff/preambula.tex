@@ -23,7 +23,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass{article}
+\documentclass[a4paper, 12pt, openany]{book}
 
 %%% Работа с русским языком % для pdfLatex
 \usepackage{cmap}					% поиск в~PDF
@@ -32,11 +32,6 @@
 \usepackage[utf8]{inputenc}			% кодировка исходного текста
 \usepackage[english,russian]{babel}	% локализация и переносы
 \usepackage{indentfirst} 			% отступ 1 абзаца
-%%% ------------------------------------------
-
-%\usepackage{color}
-%\definecolor{name}{rgb}{0,0.2,0.9}
-%\definecolor{infa}{rgb}{0, 0.2, 0.89}
 %%% ------------------------------------------
 
 \usepackage{fancyhdr} % Required for custom headers
@@ -58,14 +53,27 @@
 
 \linespread{1.1} % Line spacing
 
+\def\chaptername{Лекция} % Семинар вместо главы
+\setcounter{tocdepth}{1} % Глубина отображения в оглавлении
+
+
+\makeatletter % Убирает нумерацию на страницах, где \chapter
+\renewcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+	\thispagestyle{empty}% original style: plain
+	\global\@topnum\z@
+	\@afterindentfalse
+	\secdef\@chapter\@schapter}
+\makeatother
+
+
 % Set up the header and footer
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName} % Top left header
-\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle} % Top center head
+\chead{Лекция\ №\,\arabic{lectureNo}\ : \lectureSubject} % Top center head
 \rhead{\firstxmark} % Top right header
 \lfoot{\lastxmark} % Bottom left footer
 \cfoot{} % Bottom center footer
-\rfoot{Page\ \thepage\ of\ \protect\pageref{LastPage}} % Bottom right footer
+\rfoot{Страница\ \thepage\ из\ \protect\pageref{LastPage}} % Bottom right footer
 \renewcommand\headrulewidth{0.4pt} % Size of the header rule
 \renewcommand\footrulewidth{0.4pt} % Size of the footer rule
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
@@ -105,75 +113,14 @@
         stepnumber=1 % Line numbers go in steps of 5
 }
 
-% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
-\newcommand{\perlscript}[2]{
-\begin{itemize}
-\item[]\lstinputlisting[caption=#2,label=#1]{#1.pl}
-\end{itemize}
-}
-
 % Структура блока для кода C++. Менять при необходимости
-\newcommand{\cppfile}[2]{
+% 1 аргумент - путь файла. 2 аргумент - описание. 3 аргумент - метка (label)
+\newcommand{\cppfile}[3]{
 	\renewcommand\lstlistingname{Код}
 	\renewcommand{\lstlistlistingname}{Код}
 	\def\lstlistingautorefname{Alg.}
 	
 	\begin{itemize}
-		\item[]\lstinputlisting[caption=#2,label={code:#1}, language=C++]{#1.cpp}
+		\item[]\lstinputlisting[caption=#2,label={#3}, language=C++]{#1.cpp}
 	\end{itemize}	
 }
-
-%----------------------------------------------------------------------------------------
-%	DOCUMENT STRUCTURE COMMANDS
-%	Skip this unless you know what you're doing
-%----------------------------------------------------------------------------------------
-
-% Header and footer for when a page split occurs within a problem environment
-\newcommand{\enterProblemHeader}[1]{
-\nobreak\extramarks{#1}{#1 continued on next page\ldots}\nobreak
-\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
-}
-
-% Header and footer for when a page split occurs between problem environments
-\newcommand{\exitProblemHeader}[1]{
-\nobreak\extramarks{#1 (continued)}{#1 continued on next page\ldots}\nobreak
-\nobreak\extramarks{#1}{}\nobreak
-}
-
-\setcounter{secnumdepth}{0} % Removes default section numbers
-\newcounter{homeworkProblemCounter} % Creates a counter to keep track of the number of problems
-
-\newcommand{\homeworkProblemName}{}
-\newenvironment{homeworkProblem}[1][Problem \arabic{homeworkProblemCounter}]{ % Makes a new environment called homeworkProblem which takes 1 argument (custom name) but the default is "Problem #"
-\stepcounter{homeworkProblemCounter} % Increase counter for number of problems
-\renewcommand{\homeworkProblemName}{#1} % Assign \homeworkProblemName the name of the problem
-\section{\homeworkProblemName} % Make a section in the document with the custom problem count
-\enterProblemHeader{\homeworkProblemName} % Header and footer within the environment
-}{
-\exitProblemHeader{\homeworkProblemName} % Header and footer after the environment
-}
-
-\newcommand{\problemAnswer}[1]{ % Defines the problem answer command with the content as the only argument
-\noindent\framebox[\columnwidth][c]{\begin{minipage}{0.98\columnwidth}#1\end{minipage}} % Makes the box around the problem answer and puts the content inside
-}
-
-\newcommand{\homeworkSectionName}{}
-\newenvironment{homeworkSection}[1]{ % New environment for sections within homework problems, takes 1 argument - the name of the section
-\renewcommand{\homeworkSectionName}{#1} % Assign \homeworkSectionName to the name of the section from the environment argument
-\subsection{\homeworkSectionName} % Make a subsection with the custom name of the subsection
-\enterProblemHeader{\homeworkProblemName\ [\homeworkSectionName]} % Header and footer within the environment
-}{
-\enterProblemHeader{\homeworkProblemName} % Header and footer after the environment
-}
-
-%----------------------------------------------------------------------------------------
-%	NAME AND CLASS SECTION
-%----------------------------------------------------------------------------------------
-
-\newcommand{\hmwkTitle}{семестр 3} % Assignment title
-\newcommand{\hmwkDueDate}{\today} % Due date
-\newcommand{\hmwkClass}{Информатика} % Course/class
-\newcommand{\hmwkClassTime}{10:30am} % Class/lecture time
-\newcommand{\hmwkClassInstructor}{Jones} % Teacher/lecturer
-\newcommand{\hmwkAuthorName}{ООО "Тупой скат"} % Your name
-
