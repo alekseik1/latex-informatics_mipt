@@ -1,0 +1,51 @@
+\input{../tech_stuff/preambula}
+\input{title_page}
+
+\begin{document}
+
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+\newpage
+%\tableofcontents
+\newpage
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 1
+%----------------------------------------------------------------------------------------
+
+% To have just one problem per page, simply put a \clearpage after each problem
+
+\begin{homeworkProblem}
+Listing \ref{code:main} shows a Perl script.
+
+\cppfile{main}{Sample Perl Script With Highlighting}
+
+\lipsum[1]
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+%	PROBLEM 2
+%----------------------------------------------------------------------------------------
+
+\begin{homeworkProblem}
+\lipsum[2]
+
+\problemAnswer{
+\begin{center}
+	% test
+\includegraphics[width=0.75\columnwidth]{example_figure} % Example image
+\end{center}
+
+\lipsum[3-5]
+}
+\end{homeworkProblem}
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

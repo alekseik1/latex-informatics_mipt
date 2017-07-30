@@ -1,0 +1,17 @@
+LECTURE_NUMBER=$(shell pwd | grep -oP "lecture_([0-9]*)" | grep -oP "_.*" | sed "s/_//")
+
+.PHONY: all clean
+MAIN_FILE=main.tex
+REQ=../tech_stuff/preambula.tex ./title_page.tex $(MAIN_FILE)
+OUT_FILE=lecture_$(LECTURE_NUMBER).pdf
+DIR=$(shell pwd)
+all: main
+
+main:	$(REQ)
+	pdflatex $(MAIN_FILE) 2>&1 1>/dev/null && \
+	mv $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) && \
+	echo "-------------\nSuccessfully built $(OUT_FILE)!\n-------------\n"
+
+clean:
+	echo "Cleaning folder ./$(shell pwd | grep -oP "lecture_[0-9]*")..."
+	$(RM) -rf *.log *.aux *.gz && echo "Done!"
