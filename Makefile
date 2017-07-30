@@ -33,6 +33,7 @@ clean:
 # TODO: Сделать цель togther, собирающую все в один pdf файл
 together:
 	echo $(DIR)
+	$(RM) $(DIR)/lecture.tex
 	for i in $(shell find $(pwd) -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
 		cd $$i; \
 		echo "Объединяю файлы из папки $$i..."; \
@@ -45,3 +46,20 @@ together:
 	cd $(DIR) && \
 	$(MAKE) && \
 	echo "Сборка успешно завершена!"
+
+together_twice:
+	echo $(DIR)
+	$(RM) $(DIR)/lecture.tex
+	for i in $(shell find $(pwd) -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
+		cd $$i; \
+		echo "Объединяю файлы из папки $$i..."; \
+		cat lecture.tex >> $(DIR)/lecture.tex && \
+		echo "\n" >> $(DIR)/lecture.tex && \
+		echo "Успех!"; \
+		cd ..; \
+	done
+	echo "ФАЙЛЫ ОБЪЕДИНЕНЫ, собираем в один pdf..."
+	cd $(DIR) && \
+	$(MAKE) twice && \
+	echo "Сборка успешно завершена!"
+

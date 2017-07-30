@@ -2,14 +2,14 @@ LECTURE_NUMBER=$(shell pwd | grep -oP "lecture_([0-9]*)" | grep -oP "_.*" | sed 
 
 .PHONY: all clean twice
 MAIN_FILE=main.tex
-REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ./title_page.tex $(MAIN_FILE)
+REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ../tech_stuff/title_page.tex $(MAIN_FILE)
 OUT_FILE=lecture_$(LECTURE_NUMBER).pdf
 DIR=$(shell pwd)
 all: main
 
 main:	$(REQ)
 	pdflatex $(MAIN_FILE) 2>&1 1>/dev/null && \
-	mv $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) && \
+	mv -f $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) && \
 	echo "-------------\nУСПЕШНО ДЛЯ $(OUT_FILE)!\n-------------\n"
 
 # ACHTUNG! Очень костыльная цель. Сделал её потому, что иногда pdflatex не с первого раза делает оглавление\нумерацию\т.п.
