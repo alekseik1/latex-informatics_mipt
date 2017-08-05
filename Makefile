@@ -30,6 +30,15 @@ clean:
 	cd $(DIR) && \
 	$(MAKE) clean
 
+clean_all:
+	for i in $(shell find . -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
+		cd $$i; \
+		$(MAKE) clean_all; \
+		cd ..; \
+	done
+	cd $(DIR) && \
+	$(MAKE) clean
+
 together:
 	echo $(DIR)
 	$(RM) $(DIR)/lecture.tex
