@@ -30,8 +30,6 @@ clean:
 	cd $(DIR) && \
 	$(MAKE) clean
 
-# TODO: Есть баг - 10 лекция собирается впереди остальных, т.к. имеет приоритет при сортировке функцией sort.
-# TODO: Этот баг надо исправить и брать лекции в естественном порядке, т.е. 1..9,10,....
 together:
 	echo $(DIR)
 	$(RM) $(DIR)/lecture.tex
@@ -55,7 +53,7 @@ together_twice:
 		cd $$i; \
 		echo "Объединяю файлы из папки $$i..."; \
 		cat lecture.tex >> $(DIR)/lecture.tex && \
-		echo "\n" >> $(DIR)/lecture.tex && \
+		printf "\n" >> $(DIR)/lecture.tex && \
 		echo "Успех!"; \
 		cd ..; \
 	done
