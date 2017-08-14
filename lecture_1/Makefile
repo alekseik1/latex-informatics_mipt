@@ -12,6 +12,7 @@ main:	$(OUT_FILE)
 
 $(OUT_FILE):	$(REQ)
 	pdflatex $(MAIN_FILE) 2>&1 1>/dev/null && \
+	pdflatex $(MAIN_FILE) 2>&1 1>/dev/null && \
 	mv -f $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) \
 
 # ACHTUNG! Очень костыльная цель. Сделал её потому, что иногда pdflatex не с первого раза делает оглавление\нумерацию\т.п.
@@ -19,7 +20,6 @@ twice:	$(REQ)
 	echo "Костыльная сборка по 2 раза. Надеюсь, вы знаете, что делаете..."
 	$(MAKE) clean_all && \
 	$(MAKE) $(OUT_FILE) && \
-	$(MAKE) clean_all && \
 	$(MAKE) $(OUT_FILE) && \
 	echo "-------------\nУСПЕШНО ДЛЯ $(OUT_FILE)!\n-------------\n"
 
