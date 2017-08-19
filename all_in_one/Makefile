@@ -20,4 +20,4 @@ twice:	$(REQ)
 
 clean:
 	echo "Cleaning folder ../all_in_one..."
-	$(RM) -rf *.log *.aux *.gz *.toc && echo "Done!"
+	$(RM) -rf *.log *.aux *.gz *.toc *.out && echo "Done!"

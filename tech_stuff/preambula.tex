@@ -42,6 +42,9 @@
 \usepackage{listings} % Required for insertion of code
 \usepackage{courier} % Required for the courier font
 \usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template
+\usepackage[unicode, colorlinks, urlcolor=blue, linkcolor=blue, pagecolor=blue, citecolor=blue]{hyperref}
+
+
 
 % Margins
 \topmargin=-0.45in
@@ -50,6 +53,7 @@
 \textwidth=6.5in
 \textheight=9.0in
 \headsep=0.25in
+
 
 \linespread{1.1} % Line spacing
 
@@ -68,15 +72,18 @@
 % Set up the header and footer
 \fancypagestyle{pl}{
 	\fancyhead{}
+	% НЕ ИСПОЛЬЗУЕТСЯ. Может расширить fancy-линию, но смотрится некрасиво
+	%\fancyhfoffset[L]{15mm}% slightly less than 0.25in
+	%\fancyhfoffset[RO]{10mm}%
 	\renewcommand\headrulewidth{0.4pt} % Size of the header rule
 	\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
-	\lhead{\leftmark} % Top left header
-	%\fancyhead[CO, CE]{\leftmark} % Top center head
-	\fancyhead[RO, RE]{\rightmark} % Top right header
-	\lfoot{\lastxmark} % Bottom left footer
+	%\lhead{\leftmark} % Top left header
+	\fancyhead[CO, CE]{\leftmark} % Top center head
+	\fancyfoot[L]{\rightmark} % Top right header
+	%\lfoot{\lastxmark} % Bottom left footer. NOT USED
 	\cfoot{} % Bottom center footer
-	\rfoot{\Author} % Bottom right footer
-	\setlength\parindent{0pt} % Removes all indentation from paragraphs
+	\rfoot{\textbf{\thepage}} % Bottom right footer
+	\setlength\parindent{10pt} % Removes all indentation from paragraphs
 }
 \pagestyle{pl}
 
@@ -126,5 +133,14 @@
 	
 	\begin{itemize}
 		\item[]\lstinputlisting[caption=#2,label={#3}, language=C++]{#1.cpp}
+	\end{itemize}	
+}
+\newcommand{\pythonfile}[3]{
+	\renewcommand\lstlistingname{Код}
+	\renewcommand{\lstlistlistingname}{Код}
+	\def\lstlistingautorefname{Alg.}
+	
+	\begin{itemize}
+		\item[]\lstinputlisting[caption=#2,label={#3}, language=Python]{#1.py}
 	\end{itemize}	
 }
