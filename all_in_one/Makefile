@@ -21,3 +21,7 @@ twice:	$(REQ)
 clean:
 	echo "Cleaning folder ../all_in_one..."
 	$(RM) -rf *.log *.aux *.gz *.toc *.out && echo "Done!"
+
+clean_all:
+	$(MAKE) clean && \
+	rm -rf *.pdf
