@@ -26,7 +26,7 @@ twice:	$(REQ)
 
 clean:
 	echo "Cleaning folder ../$(shell pwd | grep -oP "lecture_[0-9]*")..."
-	$(RM) -rf *.log *.aux *.gz *.toc && echo "Done!"
+	$(RM) -rf *.log *.aux *.gz *.toc *.out && echo "Done!"
 
 clean_all:
 	$(MAKE) clean && \
