@@ -49,14 +49,15 @@
 	\end{lecSection}
 	\begin{lecSection}[Циклы, условия и конструкции]
 		В С++ три вида циклов, их синтаксис отличается от Python:
-			\cppfile{c1}{Виды циклов}{c_types}
+			%\cppfile{c1}{Виды циклов}{c_types}
 	\end{lecSection}
 	\begin{lecSection}[Тернарный оператор]
 		Тернарный оператор заменяет условия (иногда полезно):
 		\cppfile{ter1}{Пояснение к тернарному оператору}{ter1}
 	\end{lecSection}
-	\begin{lecSection}
+	\begin{lecSection}[Оператор switch]
 		\cppfile{sw1}{Оператор switch}{sw1}
+		~~\textbf{break} - обязательно в конце, так как \textbf{case 0} - это метка (такое поведение берет корни из Assembler) для перехода. В нее прыгнет программа, но дальше? Дальше она просто пойдет по остальным, ведь метка не дает никаких условий для входа. Именно поэтому необходим \textbf{break} - он завершает выполнение \textbf{switch}.
 	\end{lecSection}
 \end{lecture}
 \stepcounter{lectureNo}
