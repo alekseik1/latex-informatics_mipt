@@ -76,14 +76,16 @@
 	%\fancyhfoffset[L]{15mm}% slightly less than 0.25in
 	%\fancyhfoffset[RO]{10mm}%
 	\renewcommand\headrulewidth{0.4pt} % Size of the header rule
-	\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
+	%\renewcommand\footrulewidth{0.4pt} % Size of the footer rule
 	%\lhead{\leftmark} % Top left header
 	\fancyhead[CO, CE]{\leftmark} % Top center head
-	\fancyfoot[L]{\rightmark} % Top right header
+	\fancyhead[R]{\textbf{\thepage}}
+	%\fancyfoot[L]{\rightmark} % Top right header
 	%\lfoot{\lastxmark} % Bottom left footer. NOT USED
-	\cfoot{} % Bottom center footer
-	\rfoot{\textbf{\thepage}} % Bottom right footer
+	%\cfoot{} % Bottom center footer
+	%\rfoot{\textbf{\thepage}} % Bottom right footer
 	\setlength\parindent{10pt} % Removes all indentation from paragraphs
+	\fancyfoot{}
 }
 \pagestyle{pl}
 
@@ -144,3 +146,6 @@
 		\item[]\lstinputlisting[caption=#2,label={#3}, language=Python]{#1.py}
 	\end{itemize}	
 }
+
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+
