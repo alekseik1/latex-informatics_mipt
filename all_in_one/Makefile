@@ -11,13 +11,6 @@ main:	$(REQ)
 	mv -f $(MAIN_FILE:.tex=.pdf) $(OUT_FILE) && \
 	echo "-------------\nУСПЕШНО СОБРАЛИ ВСЕ ЛЕКЦИИ!\n-------------\n"
 
-# ACHTUNG! Очень костыльная цель. Сделал её потому, что иногда pdflatex не с первого раза делает оглавление\нумерацию\т.п.
-twice:	$(REQ)
-	echo "Костыльная сборка по 2 раза. Надеюсь, вы знаете, что делаете..."
-	$(MAKE) main; \
-	echo "-------------\nУСПЕШНО ДЛЯ $(OUT_FILE)!\n-------------\n"
-
-
 clean:
 	echo "Cleaning folder ../all_in_one..."
 	$(RM) -rf *.log *.aux *.gz *.toc *.out && echo "Done!"
