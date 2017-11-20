@@ -1,10 +1,11 @@
 LECTURE_NUMBER=$(shell pwd | grep -oP "lecture_([0-9]*)" | grep -oP "_.*" | sed "s/_//")
 
-.PHONY: all clean twice clean_all
+.PHONY: all clean clean_all
 MAIN_FILE=main.tex
 REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ../tech_stuff/title_page.tex $(MAIN_FILE) lecture.tex
 OUT_FILE=lecture_$(LECTURE_NUMBER).pdf
 DIR=$(shell pwd)
+
 all: main
 
 main:	$(OUT_FILE)

@@ -3,8 +3,6 @@
 DIR=$(shell pwd)/all_in_one
 LECTURE_NUMBERS := $(shell find $(pwd) -type d -regex "\.\/lecture_[0-9]*" | grep [0-9]* -o | sort -n)
 
-all: all
-
 # Соберет все проекты внутри по отдельности.
 all:
 	for i in $(shell find . -type d -regex "\.\/lecture_[0-9]*" | sort) ; do \
