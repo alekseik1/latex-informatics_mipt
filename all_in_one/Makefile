@@ -1,4 +1,4 @@
-.PHONY: all clean
+.PHONY: all clean mrproper
 MAIN_FILE=main.tex
 REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ../tech_stuff/title_page.tex $(MAIN_FILE)
 OUT_FILE=all_lectures.pdf
@@ -21,3 +21,6 @@ clean:
 clean_all:
 	$(MAKE) clean && \
 	rm -rf *.pdf
+
+mrproper:
+	$(MAKE) clean_all

@@ -1,6 +1,6 @@
 LECTURE_NUMBER=$(shell pwd | grep -oP "lecture_([0-9]*)" | grep -oP "_.*" | sed "s/_//")
 
-.PHONY: all clean clean_all
+.PHONY: all clean clean_all mrproper
 MAIN_FILE=main.tex
 REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ../tech_stuff/title_page.tex $(MAIN_FILE) lecture.tex
 OUT_FILE=lecture_$(LECTURE_NUMBER).pdf
@@ -23,3 +23,6 @@ clean:
 clean_all:
 	$(MAKE) clean && \
 	rm -rf *.pdf
+
+mrproper:
+	$(MAKE) clean_all
