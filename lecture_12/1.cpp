@@ -5,7 +5,7 @@
      char x;
      void bar() {
          std::cout << "A";
-    )
+     }
 };
 
 struct B : A    // struct inheritance is always public
@@ -22,4 +22,4 @@ struct C: A
     void bar() {
         std::cout << "C";
     }
-}
+};
