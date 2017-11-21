@@ -1,8 +1,9 @@
-.PHONY: all clean twice
+.PHONY: all clean mrproper
 MAIN_FILE=main.tex
 REQ=../tech_stuff/preambula.tex ../tech_stuff/environments.tex ../tech_stuff/title_page.tex $(MAIN_FILE)
 OUT_FILE=all_lectures.pdf
 DIR=$(shell pwd)
+
 all: main
 
 main:	$(REQ)
@@ -13,8 +14,11 @@ main:	$(REQ)
 
 clean:
 	echo "Cleaning folder ../all_in_one..."
-	$(RM) -rf *.log *.aux *.gz *.toc *.out && echo "Done!"
+	$(RM) *.log *.aux *.gz *.toc *.out && echo "Done!"
 
 clean_all:
 	$(MAKE) clean && \
-	rm -rf *.pdf
+	rm *.pdf
+
+mrproper:
+	$(MAKE) clean_all
