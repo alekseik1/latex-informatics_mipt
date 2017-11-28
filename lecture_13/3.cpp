@@ -1,0 +1,3 @@
+catch(...) {
+    // Your code
+}
