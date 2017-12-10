@@ -1,7 +1,7 @@
 #include<iostream>
 
 struct Student {
-    int8_t age;
+    int8_t age;	// Here age is not shown, but age is kept
     int16_t group;
     std::string name;
 };
