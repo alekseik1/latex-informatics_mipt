@@ -5,7 +5,6 @@
 int main()
 {
     LinkedList<std::string> str_list;
-   // LinkedList<int32_t> int_list; // Not used now
     list_init(str_list);
 
     list_insert(str_list, std::string("World"));

@@ -10,7 +10,7 @@ void self_counter()
 
 int main()
 {
-    //self_counter(); // won't work
+    //self_counter(); // --> No, it won't work
     self_counter<1>();
     self_counter<1>();
     self_counter<1>();

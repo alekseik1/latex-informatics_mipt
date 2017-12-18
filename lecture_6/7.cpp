@@ -1,24 +1,20 @@
 #include <iostream>
 
-template<int number>
+template<int number=0>  // Has default value 0
 void self_counter()
 {
     static int32_t counter = 0;
     counter++;
-    std::cout << "Was called: " << counter << " times";
+    std::cout << "Was called: " << counter << " times" << std::endl;
 }
-
-template<>
-void self_counter<0>;
 
 int main()
 {
-    //self_counter(); // won't work
     self_counter<1>();
     self_counter<1>();
     self_counter<1>();
     self_counter<2>();
     self_counter<2>();
-    self_counter(); // Now without instansiate
+    self_counter(); // --> Yeah, now without instansiate
     return 0;
 }
