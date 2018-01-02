@@ -1,0 +1,21 @@
+\input{../tech_stuff/preambula}
+\input{../tech_stuff/environments}
+%----------------------------------------------------------------------------------------
+\newcounter{lectureNo}
+\setcounter{lectureNo}{1}
+\newcommand{\allInOneFolder}{/home/aleksei/github_projects/latex_works/informatics/3sem/all_in_one}
+\newcommand{\mainFolder}{/home/aleksei/github_projects/latex_works/informatics/3sem}
+\newcommand{\myFolder}{}
+\newcommand{\lectureSubject}{}
+
+\input{\mainFolder/tech_stuff/title_page}
+
+\begin{document}
+	\maketitle
+
+	%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+	\tableofcontents
+	\newpage
+	\input{\allInOneFolder/lecture}
+\end{document}

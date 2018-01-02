@@ -1,0 +1,75 @@
+% TODO: ПОМЕНЯЙТЕ НА СВОЙ ПУТЬ ПРИ СБОРКЕ
+\renewcommand{\mainFolder}{/home/aleksei/github_projects/latex_works/informatics/3sem}
+\renewcommand{\myFolder}{\mainFolder/lecture_\arabic{lectureNo}/}
+
+%	LECTURE INFO
+%----------------------------------------------------------------------------------------
+\renewcommand{\lectureSubject}{Контейнеры в C++}
+%----------------------------------------------------------------------------------------
+%
+% Главное - указывать в путях для добавляемых файлов переменную \myFolder.
+% Так, новый cpp файл должен иметь путь \cppfile{\myFolder/main}{....} (указывается без расширения)
+% Нельзя писать \cppfile{main}{...} !!!
+% Если не выполнить это требование, большой проект не будет собираться
+
+
+
+\begin{lecture}[\lectureSubject]
+	\begin{lecSection}[LinkedList]
+		Продолжим работу над кодом из предыдущей лекции:
+		\cppfile{\myFolder/linkedList}{LinkedList}{1}
+		\cppfile{\myFolder/linkedListHeader}{Header-файл для нашей программы}{2}
+		Код заполнен не до конца, я не смог поспевать за Т.Ф. (если у кого будут исправления, прошу написать \href{https://vk.com/alekseik1}{мне}).
+		\begin{center}
+			{\large{ОБНОВЛЕНИЕ. Код всего проекта можно смотреть \href{https://github.com/alekseik1/cpp\_lections\_2017/tree/master/lection\%207}{здесь}.
+			}}
+		\end{center}
+	\end{lecSection}
+	\begin{lecSection}[Библиотека стандартных шаблонов С++]
+		Библиотека стандартных шаблонов С++ называется \textbf{STL}.
+		Она состоит из нескольких частей и типов, но выдерживает следующую структуру:
+		\begin{enumerate}
+			\item Контейнеры -- некоторый объект, содержащий данные.
+			\item Итераторы -- позволяют \textit{итерироваться по элементам контейнера}.
+			\item Алгоритмы -- название само говорит о предназначении. Примечательно, что они не имеют привязки к конкретному типу контейнера.
+		\end{enumerate}
+		\begin{tabular}{|p{0.31\linewidth}|p{0.31\linewidth}|p{0.31\linewidth}|}
+			\multicolumn{3}{c}{\bfseries Таблица (для наглядности)} \\ \hline
+			
+			\hline Контейнеры	& Итераторы	& Алгоритмы \\	\hline
+					Типы контейнеров: 
+					\begin{enumerate}
+						\item \textbf{vector<T>} (похож на \textbf{list} в Питоне)	
+						\item \textbf{list<T>} (это \textbf{LinkedList} из Питона)
+						\item 	\textbf{set<T>} -- красно-черное двоичное дерево поиска ($O(\log{N})$ - добавление/удаление/поиск.
+						\item \textbf{unordered\_set<T>} -- хэш-таблица $O(1)$ -- добавление/удаление/поиск
+						\item \textbf{map<T, V>} -- ассоциативный массив, состоящий из пар \textit{<key, value>}. При этом \textit{key} типа \textbf{T}, \textit{value} типа \textbf{V}
+					\end{enumerate} &
+					Типы итераторов:
+					\begin{enumerate}
+						\item \underline{input output} -- доступ к элементу содержимого контейнера по итератору
+						\item \underline{bidirectional} $--$i -- если контейнер 'знает', что он двунаправленный
+						\item \underline{random access} i = i + 100 -- итератор произвольного доступа (а не только по +1) 
+						\item \underline{forward} ++i -- обычный шаг на один вперед
+					\end{enumerate}  & \begin{enumerate}
+					\item см. ниже 
+				\end{enumerate} \\ \hline
+		\end{tabular}
+		\begin{lecSubsection}{Итерирование}
+		Попробуем проитерироваться по контейнеру и применить к каждому элементу функцию \textbf{foobar}. Это можно сделать несколькими способами:
+		\begin{enumerate}
+			\item 		\cppfile{\myFolder/1}{Пример итерирования}{3}
+			Здесь итератор \textbf{i} пробегает по всем значениям массива. Как он ведет учет текущей позиции, нас не волнует -- в этом и есть прелесть подобной структуры. Начало итерирования -- начало массива, конец итерирования -- конец массива. Есть и защита: если попытаться выйти за A.end() (например, на единицу), то при попытке разыменовать такой адрес выйдет ошибка. 
+			\item 		То же самое итерирование можно было провести с помощью \textbf{foreach} (из библиотеки \textcolor{green}{\textbf{<algorithm>}})
+			\cppfile{\myFolder/2}{Применение алгоритмов для итерирования}{4}
+			Обратите внимание: функции \textbf{for\_each} уходит \textit{указатель} на функцию \textbf{foobar} (она ведь тоже хранится в памяти, как и переменные).
+		\end{enumerate}
+
+		В стандарте C++ 11 использование контейнеров упрощено:
+		\cppfile{\myFolder/3}{Контейнеры в C++11}{5}
+		Единственный минус: чтобы понять, что происходит в итераторе, приходится копать код вверх, до описания функции \textbf{foobar}.\\
+		В примере \ref{5} используется \textbf{auto} -- автоматический выбор типа. При таком подходе компилятор сам подбирает подходящий тип для переменной.
+		\end{lecSubsection}
+	\end{lecSection}
+\end{lecture}
+\stepcounter{lectureNo}

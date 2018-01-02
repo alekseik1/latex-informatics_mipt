@@ -1,0 +1,23 @@
+\input{../tech_stuff/preambula}
+\input{../tech_stuff/environments}
+%----------------------------------------------------------------------------------------
+\newcounter{lectureNo}
+% lectureNo - номер лекции. chapter - номер лекции за вычетом единицы.
+% Костыльно, но иначе не получается нормальное отображение отдельной лекции сделать.
+\setcounter{lectureNo}{5}
+\setcounter{chapter}{4}
+\newcommand{\mainFolder}{/home/aleksei/github_projects/latex_works/informatics/3sem}
+\newcommand{\myFolder}{\mainFolder/lecture_\arabic{lectureNo}/}
+\newcommand{\lectureSubject}{Меня все равно переопределят}
+
+\input{\mainFolder/tech_stuff/title_page}
+	
+\begin{document}
+	\maketitle
+
+	%\setcounter{tocdepth}{1} % Uncomment this line if you don't want subsections listed in the ToC
+
+	\tableofcontents
+	\newpage
+	\input{\myFolder/lecture}
+\end{document}
